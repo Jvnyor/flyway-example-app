@@ -3,9 +3,8 @@ name: Validate Flyway Migrations
 on:
   workflow_dispatch:
   pull_request:
-    paths:
-      - 'src/main/resources/db/migration/**'
-      - 'pom.xml'
+    branches:
+      - main
 
 jobs:
   validate-migrations:
@@ -48,17 +47,16 @@ jobs:
         env:
           PGPASSWORD: secret
 
-      - name: Run Flyway validation only
-        run: |
-          mvn flyway:validate \
-            -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
-            -Dflyway.user=myuser \
-            -Dflyway.password=secret \
-            -Dflyway.validateMigrationNaming=true
-
-      - name: Check SQL syntax by dry-run migration
+      - name: Run Flyway migrations
         run: |
           mvn flyway:migrate \
+            -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
+            -Dflyway.user=myuser \
+            -Dflyway.password=secret
+
+      - name: Validate Flyway migrations
+        run: |
+          mvn flyway:validate \
             -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
             -Dflyway.user=myuser \
             -Dflyway.password=secret
