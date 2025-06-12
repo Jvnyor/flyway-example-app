@@ -47,16 +47,16 @@ jobs:
         env:
           PGPASSWORD: secret
 
-      - name: Run Flyway validation only
+      - name: Run Flyway migrations
         run: |
-          mvn flyway:validate \
+          mvn flyway:migrate \
             -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
             -Dflyway.user=myuser \
             -Dflyway.password=secret
 
-      - name: Check SQL syntax by dry-run migration
+      - name: Validate Flyway migrations
         run: |
-          mvn flyway:migrate \
+          mvn flyway:validate \
             -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
             -Dflyway.user=myuser \
             -Dflyway.password=secret
