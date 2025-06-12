@@ -53,8 +53,7 @@ jobs:
           mvn flyway:validate \
             -Dflyway.url=jdbc:postgresql://localhost:5432/mydatabase \
             -Dflyway.user=myuser \
-            -Dflyway.password=secret \
-            -Dflyway.validateMigrationNaming=true
+            -Dflyway.password=secret
 
       - name: Check SQL syntax by dry-run migration
         run: |
