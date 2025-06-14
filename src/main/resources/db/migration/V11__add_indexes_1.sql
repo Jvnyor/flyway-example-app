@@ -1,0 +1,30 @@
+-- Adicionando vários índices para aumentar o volume de logs
+CREATE INDEX idx_users_username ON users (username);
+CREATE INDEX idx_users_email ON users (email);
+CREATE INDEX idx_products_name ON products (name);
+CREATE INDEX idx_products_price ON products (price);
+CREATE INDEX idx_orders_user_id ON orders (user_id);
+CREATE INDEX idx_orders_order_date ON orders (order_date);
+CREATE INDEX idx_order_items_order_id ON order_items (order_id);
+CREATE INDEX idx_order_items_product_id ON order_items (product_id);
+CREATE INDEX idx_categories_name ON categories (name);
+CREATE INDEX idx_product_categories_product_id ON product_categories (product_id);
+CREATE INDEX idx_product_categories_category_id ON product_categories (category_id);
+CREATE INDEX idx_reviews_user_id ON reviews (user_id);
+CREATE INDEX idx_reviews_product_id ON reviews (product_id);
+CREATE INDEX idx_reviews_rating ON reviews (rating);
+CREATE INDEX idx_inventory_product_id ON inventory (product_id);
+CREATE INDEX idx_inventory_stock_quantity ON inventory (stock_quantity);
+CREATE INDEX idx_payment_methods_name ON payment_methods (name);
+CREATE INDEX idx_user_payment_methods_user_id ON user_payment_methods (user_id);
+CREATE INDEX idx_user_payment_methods_payment_method_id ON user_payment_methods (payment_method_id);
+CREATE INDEX idx_shipping_addresses_user_id ON shipping_addresses (user_id);
+CREATE INDEX idx_shipping_addresses_city ON shipping_addresses (city);
+CREATE INDEX idx_coupons_code ON coupons (code);
+CREATE INDEX idx_user_coupons_user_id ON user_coupons (user_id);
+CREATE INDEX idx_user_coupons_coupon_id ON user_coupons (coupon_id);
+CREATE INDEX idx_wishlist_user_id ON wishlist (user_id);
+CREATE INDEX idx_wishlist_product_id ON wishlist (product_id);
+CREATE INDEX idx_notifications_user_id ON notifications (user_id);
+CREATE INDEX idx_notifications_is_read ON notifications (is_read);
+
